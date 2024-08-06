@@ -1,0 +1,37 @@
+[package]
+name = "sinteflake"
+version = "0.1.0"
+edition = "2021"
+description = "A 64 bits ID generator inspired by Snowflake, but generating very distinct numbers"
+license = "Apache-2.0"
+keywords = ["id", "generator", "snowflake"]
+authors = ["Antoine Pultier <antoine.pultier@sintef.no>"]
+documentation = "https://docs.rs/sinteflake"
+repository = "https://github.com/SINTEF/sinteflake"
+include = [
+  "README.md",
+  "LICENSE",
+  "src/*.rs",
+  "benches/*.rs",
+  "Cargo.toml",
+  "tests/*.rs",
+]
+
+[dependencies]
+bitvec = "1.0"
+siphasher = "1.0"
+time = "0.3"
+thiserror = "1.0"
+once_cell = "1.19"
+tokio = { version = "1.0", features = ["full"], optional = true }
+
+[dev-dependencies]
+criterion = "0.5"
+
+[[bench]]
+name = "bench"
+harness = false
+
+[features]
+default = []
+async = ["tokio"]
